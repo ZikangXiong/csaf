@@ -147,7 +147,7 @@ class Component(cbase.CsafBase, metaclass=abc.ABCMeta):
         if item in self.parameters:
             return self.parameters[item]
         else:
-            raise RuntimeError(f"component {self.name} has no parameter {item}")
+            return super().__getattribute__(item)
 
     def validate(self) -> None:
         def validate_signature(name, signature, value):
